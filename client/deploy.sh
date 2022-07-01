@@ -19,5 +19,5 @@ git commit -m 'deploy'
 
 # Add your GitHub repo details here
 git push -f git@github.com:0ngezwa-felele/movieAPI.git main:gh-pages
-
+ 
 cd -
