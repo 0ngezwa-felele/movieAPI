@@ -40,7 +40,7 @@
 
             <template x-for=" movie in episodes">
                 <div>
-                    <button>Add</button>
+                    <button @click="addMovie(movie)">Add</button>
                     <div x-text="movie.title"></div>
                     <img x-bind:src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" />
                 </div>

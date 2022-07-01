@@ -7,21 +7,21 @@ export default function App() {
             lastname: '',
             username: '',
             password: '',
-            movie:''
+            movie: ''
         },
         error: '',
         logUser: {
             username: null,
             password: null
         },
-        movieList:{
-            movie:'',
-            poster_image:''
+        movieList: {
+            movie: '',
+            poster_image: ''
         },
         logged: [],
         // series:[],
-        episodes:[],
-        
+        episodes: [],
+
         registration() {
             console.log(this.user);
             axios
@@ -60,14 +60,14 @@ export default function App() {
                 })
             console.log(this.logUser);
         },
-        playList(){
+        playList() {
             axios
                 .get('https://api.themoviedb.org/3/search/movie?api_key=795d5c5e3b5d1d210177be9dcd0fdc89&query=madea', {
 
                 })
-                
+
                 .then(results => {
-                   console.log(results);
+                    console.log(results);
                     // this.movie = result.data
                     this.movie = results.data.results
                     console.log(this.movie);
@@ -75,25 +75,41 @@ export default function App() {
 
                 })
         },
-        searchMovies(){
+        searchMovies() {
             axios
-            .get(`https://api.themoviedb.org/3/search/movie?api_key=795d5c5e3b5d1d210177be9dcd0fdc89&query=${this.movieList.movie}`)
-            .then((result)=>{
-                console.log(result.data.results);
-                this.episodes= result.data.results
-            })
+                .get(`https://api.themoviedb.org/3/search/movie?api_key=795d5c5e3b5d1d210177be9dcd0fdc89&query=${this.movieList.movie}`)
+                .then((result) => {
+                    console.log(result.data.results);
+                    this.episodes = result.data.results
+                })
         },
-        addMovie() {
+        addMovie(userMovie) {
             console.log(this.movieList)
-            try {
-                axios
-                    .post('/api/playlist', this.movieList)
-                    .then(()=>this.searchMovies()+"Movie added to playlist!")
-                    .catch(error => console.log(error))
-            } catch (error) {
+            const url = 'http://localhost:1420/api/playlist'
+            axios
+                .post(`${url}/${userMovie}`)
+                .then((result) => {
+                    console.log({ inside: result.data })
 
-            }
-        },
+                }).catch(e => {
+
+                    const { error } = e.response.data
+                    this.error = error;
+                    console.log(e);
+                    setTimeout(() => this.error = '', 2500)
+                })
+            // .then((results)=>this.+"Movie added to playlist!")
+            //         //         .catch(error => console.log(error))
+            // userMovie:{
+            //     name:title,
+            //     poster_image:poster_path
+            // }
+
+
+            //         // } catch (error) {
+
+            //         // }
+        }
     }
 
 }
