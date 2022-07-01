@@ -1,0 +1,105 @@
+body {
+    background-image: linear-gradient(rgba(150, 205, 212, 0.8), rgba(6, 92, 107, 0.384));
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto;
+    align-content: center;
+    text-align: center;
+    padding: 5em;
+    /* height: 475px; */
+}
+
+.overall {
+    border-radius: 25px;
+    margin: auto;
+    width: 50%;
+    align-content: center;
+    text-align: center;
+    padding: 1em;
+    background-image: linear-gradient(rgba(78, 56, 129, 0.8), rgba(138, 144, 190, 0.8));
+}
+.textbox{
+  padding: 1em;
+}
+
+.reg input{
+    padding: 0.25em;
+    border:solid black;
+  }
+  .log input{
+    padding: 0.25em;
+    border:solid black
+  }
+
+  .reg{
+    /* padding-bottom: 5em; */
+    padding: 2em;
+    /* border: solid black; */
+  }
+  .regBtn{
+      padding-top: 2em;
+  }
+  .logBtn{
+    padding-top: 2em;
+}
+.log button{
+    margin: auto;
+    background-color: whitesmoke;
+    border: 1px solid wheat;
+    color: black;
+    height: 30px;
+    width: 80px;
+    outline: none;
+    transition: .6s ease;
+    border-radius: 25px;
+  }
+  .log button:hover{
+    cursor: pointer;
+    background-color: rgb(139, 206, 223);
+    color: black;
+    box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white;
+    font-weight: bold;
+  
+  }
+  .reg button{
+    margin: auto;
+    background-color: whitesmoke;
+    border: 1px solid wheat;
+    color: black;
+    height: 30px;
+    width: 80px;
+    outline: none;
+    transition: .6s ease;
+    border-radius: 25px;
+  }
+  .reg button:hover{
+    cursor: pointer;
+    background-color: rgb(139, 206, 223);
+    color: black;
+    box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white;
+    font-weight: bold;
+  
+  }
+  .movies button{
+    margin: auto;
+    background-color: whitesmoke;
+    border: 1px solid wheat;
+    color: black;
+    height: 30px;
+    width: 100px;
+    outline: none;
+    transition: .6s ease;
+    border-radius: 25px;
+  }
+  .movies button:hover{
+    cursor: pointer;
+    background-color: rgb(139, 206, 223);
+    color: black;
+    box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white;
+    font-weight: bold;
+  
+  }
+  .movies input{
+    padding: 0.25em;
+    border:solid black;
+  }

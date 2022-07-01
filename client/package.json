@@ -1,0 +1,19 @@
+{
+    "name": "movieapp",
+    "private": true,
+    "version": "0.0.0",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "vite": "^2.9.13"
+    },
+    "dependencies": {
+        "@alpinejs/persist": "^3.10.2",
+        "alpinejs": "^3.10.2",
+        "axios": "^0.27.2",
+        "everyday-fun": "^1.1.0"
+    }
+}
