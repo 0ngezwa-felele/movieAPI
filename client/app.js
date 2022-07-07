@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+const herokuUrl = 'https://apimoviies.herokuapp.com/'
 export default function App() {
     return {
         user: {
@@ -19,13 +19,12 @@ export default function App() {
             poster_image: ''
         },
         logged: [],
-        // series:[],
         episodes: [],
 
         registration() {
             console.log(this.user);
             axios
-                .post('http://localhost:1420/api/signup', this.user)
+                .post(`${herokuUrl}/api/signup`, this.user)
 
                 .then((result) => {
                     console.log(result.data)
@@ -41,7 +40,7 @@ export default function App() {
 
         login() {
             axios
-                .post('http://localhost:1420/api/login', this.logUser)
+                .post(`${herokuUrl}/api/login`, this.logUser)
                 .then((result) => {
                     var accessToken = result.data
                     console.log(result.data);
@@ -68,7 +67,6 @@ export default function App() {
 
                 .then(results => {
                     console.log(results);
-                    // this.movie = result.data
                     this.movie = results.data.results
                     console.log(this.movie);
                     console.log(results.data);
@@ -85,7 +83,7 @@ export default function App() {
         },
         addMovie(userMovie) {
             console.log(this.movieList)
-            const url = 'http://localhost:1420/api/playlist'
+            const url = `${herokuUrl}/api/playlist`
             axios
                 .post(`${url}/${userMovie}`)
                 .then((result) => {
@@ -98,17 +96,6 @@ export default function App() {
                     console.log(e);
                     setTimeout(() => this.error = '', 2500)
                 })
-            // .then((results)=>this.+"Movie added to playlist!")
-            //         //         .catch(error => console.log(error))
-            // userMovie:{
-            //     name:title,
-            //     poster_image:poster_path
-            // }
-
-
-            //         // } catch (error) {
-
-            //         // }
         }
     }
 
