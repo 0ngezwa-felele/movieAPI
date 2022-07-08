@@ -89,7 +89,7 @@ export default function App() {
             console.log(this.movieList)
             const url = `${herokuUrl}/api/playlist`
             axios
-                .post(`${url}/${userMovie}`)
+                .post(`${url}/${this.user.username}`, {movieId: userMovie.id})
                 .then((result) => {
                     console.log({ inside: result.data })
 

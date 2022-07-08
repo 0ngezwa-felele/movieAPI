@@ -4,14 +4,14 @@ const jwt = require("jsonwebtoken");
 module.exports = (app, db) => {
     // learn Promise.all
 
-     function getMovieById(id) {
+    function getMovieById(id) {
         return axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=7e719bfe3cd3786ebf0a05d3b138853d&append_to_response=videos`)
             .then(r => r.data)
             .catch(e => console.log(e))
     }
 
 
-    app.get('/api/playlist/:user_id', async(req, res)=> {
+    app.get('/api/playlist/:user_id', async (req, res) => {
         const movieIds = await db.manyOrNone('select * from movies where user_id = $1', [req.params.user_id])
 
         // console.log({movieIds});
@@ -24,7 +24,7 @@ module.exports = (app, db) => {
         console.log(movies);
 
         res.json({
-            user: {id:1},
+            user: { id: 1 },
             movies
         })
 
@@ -94,13 +94,14 @@ module.exports = (app, db) => {
             })
         }
     })
-    app.post('/api/playlist/:id', async function (req, res) {
+    app.post('/api/playlist/:username', async function (req, res) {
         try {
             const { movieId } = req.body
 
-            const { id } = req.params // userId
+            const { username } = req.params // userId
             // const
             let list = await db.oneOrNone(`select * from movies where user_id = $1 and movie_id = $2`, [id, movieId])
+                    await db.oneOrNone(`select * from movies where user_id = $1_`, [username])
             if (list == null) {
                 await db.oneOrNone(`insert into movies (movie_id, user_id) values($1,$2)`, [movieId, id])
             }
