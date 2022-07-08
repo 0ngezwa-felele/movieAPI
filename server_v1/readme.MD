@@ -1,0 +1,3 @@
+<!-- My app currently is able to register a new user, login with username and password with the existing users, search for movies and add favourite movies for the looged user  -->
+
+<!-- What's not working currently is the ability to go to user's playlist, the added movies only show on the database and that's something i'm still working on, and i also need to reshape the displayed list of movies together with their images  -->

@@ -12,7 +12,7 @@
     <div class="overall" x-data="logging">
         <div class="log">
             <h3>Enter here your login credentials</h3>
-            <input type="password" x-model="logUser.password" placeholder="password" name="" id="">
+            <input type="password" x-model="logUser.password" placeholder="password">
             <input type="text" x-model="logUser.username" placeholder="username">
             <div class="logBtn">
                 <button @click="login()">login</button>
@@ -22,8 +22,8 @@
         <div class="reg">
             <h3>First time visiting this app? register here</h3>
             <div class="textbox">
-                <input type="text" x-model="user.firstname" placeholder="Name" name="" id="">
-                <input type="text" x-model="user.lastname" placeholder="Surname" name="" id="">
+                <input type="text" x-model="user.firstname" placeholder="Name" >
+                <input type="text" x-model="user.lastname" placeholder="Surname" >
             </div>
             <input type="text" x-model="user.username" placeholder="username">
             <input type="password" x-model="user.password" placeholder="Password" name="">
@@ -47,7 +47,7 @@
             </template>
         </div>
     </div>
-    <script type="module" src="./main.js"></script>
+    <script defer type="module" src="./main.js"></script>
 </body>
 
 </html>

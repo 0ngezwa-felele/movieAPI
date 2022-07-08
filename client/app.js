@@ -1,5 +1,9 @@
 import axios from 'axios';
-const herokuUrl = 'https://apimoviies.herokuapp.com/'
+const herokuUrl = 'https://apimoviies.herokuapp.com'
+
+console.log('App running app.js line 4')
+
+
 export default function App() {
     return {
         user: {
