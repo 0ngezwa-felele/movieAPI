@@ -11,25 +11,26 @@ module.exports = (app, db) => {
     }
 
 
-    app.get('/api/playlist/:user_id', async (req, res) => {
-        const movieIds = await db.manyOrNone('select * from movies where user_id = $1', [req.params.user_id])
+    // app.post('/api/playlist/:user_id', async (req, res) => {
+    //     console.log('adding');
+    //     const movieIds = await db.manyOrNone('select * from movies where user_id = $1', [req.params.user_id])
 
-        // console.log({movieIds});
-        const moviesPending = movieIds.map(movie => {
-            return getMovieById(movie.movie_id)
-        })
+    //     // console.log({movieIds});
+    //     const moviesPending = movieIds.map(movie => {
+    //         return getMovieById(movie.movie_id)
+    //     })
 
-        const movies = await Promise.all(moviesPending)
+    //     const movies = await Promise.all(moviesPending)
 
-        console.log(movies);
+    //     console.log(movies);
 
-        res.json({
-            user: { id: 1 },
-            movies
-        })
+    //     res.json({
+    //         user: { id: 1 },
+    //         movies
+    //     })
 
 
-    })
+    // })
 
 
     app.get('/api/test', function (req, res) {
@@ -89,6 +90,7 @@ module.exports = (app, db) => {
                 })
             }
         } catch (error) {
+            console.log(error);
             res.status(500).json({
                 error: error.message
             })
@@ -97,19 +99,22 @@ module.exports = (app, db) => {
     app.post('/api/playlist/:username', async function (req, res) {
         try {
             const { movieId } = req.body
-
+            console.log(req.body, req.params)
             const { username } = req.params // userId
-            // const
-            let list = await db.oneOrNone(`select * from movies where user_id = $1 and movie_id = $2`, [id, movieId])
-                    await db.oneOrNone(`select * from movies where user_id = $1_`, [username])
-            if (list == null) {
-                await db.oneOrNone(`insert into movies (movie_id, user_id) values($1,$2)`, [movieId, id])
-            }
 
+            
+            // const
+          let user= await db.oneOrNone(`select * from users where username = $1`, [username])
+          if(user === null) {
+              throw Error('User not exist')
+          }
+            
+            await db.none(`insert into movies (movie_id, user_id) values($1,$2)`, [movieId, user.id])
             res.json({
                 message: 'Movie added'
             })
         } catch (error) {
+            console.log(error)
             res.status(500).json({
                 error: error.message
             })

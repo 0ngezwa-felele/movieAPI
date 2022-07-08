@@ -1,5 +1,5 @@
 import axios from 'axios';
-const herokuUrl = 'https://apimoviies.herokuapp.com'
+const herokuUrl = 'http://localhost:1420' // 'https://apimoviies.herokuapp.com'
 
 console.log('App running app.js line 4')
 
@@ -9,14 +9,14 @@ export default function App() {
         user: {
             firstname: '',
             lastname: '',
-            username: '',
-            password: '',
+            username: 'jsmith',
+            password: 'password',
             movie: ''
         },
         error: '',
         logUser: {
-            username: null,
-            password: null
+            username: 'jsmith',
+            password: 'password'
         },
         movieList: {
             movie: '',
@@ -86,8 +86,9 @@ export default function App() {
                 })
         },
         addMovie(userMovie) {
-            console.log(this.movieList)
-            const url = `${herokuUrl}/api/playlist`
+            const url = 'http://localhost:1420/api/playlist'
+            console.log(this.user, '----')
+            // const url = `${herokuUrl}/api/playlist`
             axios
                 .post(`${url}/${this.user.username}`, {movieId: userMovie.id})
                 .then((result) => {
